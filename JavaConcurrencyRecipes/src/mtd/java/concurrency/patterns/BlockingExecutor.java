@@ -1,5 +1,7 @@
 package mtd.java.concurrency.patterns;
 
+import java.util.concurrent.Callable;
+import java.util.concurrent.Future;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.RejectedExecutionException;
 import java.util.concurrent.Semaphore;
@@ -22,6 +24,12 @@ public class BlockingExecutor extends ThreadPoolExecutor {
 				new LinkedBlockingQueue<Runnable>());
 
 		semaphore = new Semaphore(queueSize + poolSize);
+	}
+
+	@Override
+	public <T> Future<T> submit(Callable<T> task) {
+		// TODO Auto-generated method stub
+		return super.submit(task);
 	}
 
 	/**
